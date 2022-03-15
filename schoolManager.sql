@@ -22,15 +22,15 @@ CREATE TABLE `subject` (
 ) ENGINE=INNODB;
 
 CREATE TABLE teacher_subject (
-	teacherId INT NOT NULL,
-    subjectId INT NOT NULL,
-    FOREIGN KEY (teacherId) REFERENCES teacher(id),
-    FOREIGN KEY (subjectId) REFERENCES `subject`(id)
+	teacher_id INT NOT NULL,
+    subject_id INT NOT NULL,
+    FOREIGN KEY (teacher_id) REFERENCES teacher(id),
+    FOREIGN KEY (subject_id) REFERENCES `subject`(id)
 ) ENGINE=INNODB;
 
 CREATE TABLE student_subject (
-	studentId INT NOT NULL,
-    subjectId INT NOT NULL,
-    FOREIGN KEY (studentId) REFERENCES student(id),
-    FOREIGN KEY (subjectId) REFERENCES `subject`(id)
+	student_id INT NOT NULL,
+    subject_id INT NOT NULL,
+    FOREIGN KEY (student_id) REFERENCES student(id),
+    FOREIGN KEY (subject_id) REFERENCES `subject`(id)
 ) ENGINE=INNODB;

@@ -20,9 +20,9 @@ public class Student {
 	@ManyToMany
 	@JoinTable(
 		name="student_subject",
-		uniqueConstraints = @UniqueConstraint(columnNames = { "studentId", "subjectId" }),
-		joinColumns = @JoinColumn(name = "studentId"),
-		inverseJoinColumns = @JoinColumn(name = "subjectId")
+		uniqueConstraints = @UniqueConstraint(columnNames = { "student_id", "subject_id" }),
+		joinColumns = @JoinColumn(name = "student_id"),
+		inverseJoinColumns = @JoinColumn(name = "subject_id")
 			)
 	private List<Subject> subjects;
 

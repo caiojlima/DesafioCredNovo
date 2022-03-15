@@ -16,18 +16,18 @@ public class Subject {
 	@ManyToMany
 	@JoinTable(
 		name="teacher_subject",
-		uniqueConstraints = @UniqueConstraint(columnNames = { "teacherId", "subjectId" }),
-		joinColumns = @JoinColumn(name = "subjectId"),
-		inverseJoinColumns = @JoinColumn(name = "teacherId")
+		uniqueConstraints = @UniqueConstraint(columnNames = { "teacher_id", "subject_id" }),
+		joinColumns = @JoinColumn(name = "subject_id"),
+		inverseJoinColumns = @JoinColumn(name = "teacher_id")
 			)
 	private List<Teacher> teachers;
 	
 	@ManyToMany
 	@JoinTable(
 		name="student_subject",
-		uniqueConstraints = @UniqueConstraint(columnNames = { "studentId", "subjectId" }),
-		joinColumns = @JoinColumn(name = "subjectId"),
-		inverseJoinColumns = @JoinColumn(name = "studentId")
+		uniqueConstraints = @UniqueConstraint(columnNames = { "student_id", "subject_id" }),
+		joinColumns = @JoinColumn(name = "subject_id"),
+		inverseJoinColumns = @JoinColumn(name = "student_id")
 			)
 	private List<Student> students;
 
