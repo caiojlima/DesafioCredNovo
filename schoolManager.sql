@@ -1,0 +1,36 @@
+DROP DATABASE IF EXISTS schoolManager;
+
+CREATE DATABASE schoolManager;
+
+USE schoolManager;
+
+CREATE TABLE student (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(30) NOT NULL,
+    age INT NOT NULL
+) ENGINE=INNODB;
+
+CREATE TABLE teacher (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(30) NOT NULL,
+    age INT NOT NULL
+) ENGINE=INNODB;
+
+CREATE TABLE `subject` (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(30) NOT NULL
+) ENGINE=INNODB;
+
+CREATE TABLE teacher_subject (
+	teacherId INT NOT NULL,
+    subjectId INT NOT NULL,
+    FOREIGN KEY (teacherId) REFERENCES teacher(id),
+    FOREIGN KEY (subjectId) REFERENCES `subject`(id)
+) ENGINE=INNODB;
+
+CREATE TABLE student_subject (
+	studentId INT NOT NULL,
+    subjectId INT NOT NULL,
+    FOREIGN KEY (studentId) REFERENCES student(id),
+    FOREIGN KEY (subjectId) REFERENCES `subject`(id)
+) ENGINE=INNODB;
