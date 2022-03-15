@@ -3,6 +3,8 @@ package com.crednovo.desafio.controllers;
 import java.util.List;
 import com.crednovo.desafio.models.Student;
 import com.crednovo.desafio.repository.StudentRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,9 +30,9 @@ public class StudentsController {
 	}
 	
 	@PostMapping(value="/students")
-	public Student saveStudent(@RequestBody Student student) {
+	public ResponseEntity<?> saveStudent(@RequestBody Student student) {
 		studentRepository.save(student);
-		return student;
+		return new ResponseEntity<>(student, HttpStatus.CREATED);
 	}
 	
 }
