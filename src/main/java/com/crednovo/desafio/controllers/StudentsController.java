@@ -42,7 +42,7 @@ public class StudentsController {
 		return new ResponseEntity<>(student, HttpStatus.CREATED);
 	}
 	
-	@PutMapping(value="/{subjectId}/student/{studentId}")
+	@PutMapping(value="/subject/{subjectId}/student/{studentId}")
 	public ResponseEntity<?> registerStudent(@PathVariable long subjectId, @PathVariable long studentId) {
 		Student student = studentRepository.findById(studentId).get();
 		Subject subject = subjectRepository.findById(subjectId).get();

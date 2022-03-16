@@ -1,7 +1,7 @@
 package com.crednovo.desafio.models;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.*;
 
 @Entity
@@ -23,7 +23,7 @@ public class Teacher {
 		joinColumns = @JoinColumn(name = "teacher_id"),
 		inverseJoinColumns = @JoinColumn(name = "subject_id")
 	)
-	private List<Subject> subjects = new ArrayList<>();
+	private Set<Subject> subjects = new HashSet<Subject>();
 
 	public long getId() {
 		return id;
@@ -49,16 +49,20 @@ public class Teacher {
 		this.age = age;
 	}
 
-	public List<Subject> getSubjects() {
+	public Set<Subject> getSubjects() {
 		return subjects;
 	}
 
-	public void setSubjects(List<Subject> subjects) {
+	public void setSubjects(Set<Subject> subjects) {
 		this.subjects = subjects;
 	}
 	
 	public void enrollSubjects(Subject subject) {
 		subjects.add(subject);
+	}
+	
+	public void deleteSubjects(Subject subject) {
+		subjects.remove(subject);
 	}
 	
 }

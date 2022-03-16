@@ -1,10 +1,8 @@
 package com.crednovo.desafio.models;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.*;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -26,7 +24,7 @@ public class Student {
 		joinColumns = @JoinColumn(name = "student_id"),
 		inverseJoinColumns = @JoinColumn(name = "subject_id")
 	)
-	private List<Subject> subjects = new ArrayList<Subject>();
+	private Set<Subject> subjects = new HashSet<Subject>();
 
 	public long getId() {
 		return id;
@@ -52,11 +50,11 @@ public class Student {
 		this.age = age;
 	}
 
-	public List<Subject> getSubjects() {
+	public Set<Subject> getSubjects() {
 		return subjects;
 	}
 
-	public void setSubjects(List<Subject> subjects) {
+	public void setSubjects(Set<Subject> subjects) {
 		this.subjects = subjects;
 	}
 	
