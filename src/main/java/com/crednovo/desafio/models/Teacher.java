@@ -1,5 +1,6 @@
 package com.crednovo.desafio.models;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
@@ -19,11 +20,10 @@ public class Teacher {
 	@ManyToMany
 	@JoinTable(
 		name="teacher_subject",
-		uniqueConstraints = @UniqueConstraint(columnNames = { "teacher_id", "subject_id" }),
 		joinColumns = @JoinColumn(name = "teacher_id"),
 		inverseJoinColumns = @JoinColumn(name = "subject_id")
 	)
-	private List<Subject> subjects;
+	private List<Subject> subjects = new ArrayList<>();
 
 	public long getId() {
 		return id;
@@ -55,6 +55,10 @@ public class Teacher {
 
 	public void setSubjects(List<Subject> subjects) {
 		this.subjects = subjects;
+	}
+	
+	public void enrollSubjects(Subject subject) {
+		subjects.add(subject);
 	}
 	
 }

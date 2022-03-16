@@ -1,8 +1,11 @@
 package com.crednovo.desafio.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Subject {
@@ -16,20 +19,14 @@ public class Subject {
 	@ManyToMany
 	@JoinTable(
 		name="teacher_subject",
-		uniqueConstraints = @UniqueConstraint(columnNames = { "teacher_id", "subject_id" }),
 		joinColumns = @JoinColumn(name = "subject_id"),
 		inverseJoinColumns = @JoinColumn(name = "teacher_id")
 			)
-	private List<Teacher> teachers;
+	private List<Teacher> teachers = new ArrayList<>();
 	
-	@ManyToMany
-	@JoinTable(
-		name="student_subject",
-		uniqueConstraints = @UniqueConstraint(columnNames = { "student_id", "subject_id" }),
-		joinColumns = @JoinColumn(name = "subject_id"),
-		inverseJoinColumns = @JoinColumn(name = "student_id")
-			)
-	private List<Student> students;
+	@JsonIgnore
+	@ManyToMany(mappedBy="subjects")
+	private List<Student> students = new ArrayList<>();
 
 	public long getId() {
 		return id;
