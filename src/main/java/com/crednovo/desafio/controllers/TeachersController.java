@@ -2,6 +2,8 @@ package com.crednovo.desafio.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.crednovo.desafio.models.Student;
 import com.crednovo.desafio.models.Subject;
 import com.crednovo.desafio.models.Teacher;
@@ -38,7 +40,7 @@ public class TeachersController {
 	}
 	
 	@PostMapping(value="/teachers")
-	public ResponseEntity<?> saveTeacher(@RequestBody Teacher teacher) {
+	public ResponseEntity<?> saveTeacher(@RequestBody @Valid Teacher teacher) {
 		teacherRepository.save(teacher);
 		return new ResponseEntity<>(teacher, HttpStatus.CREATED);
 	}
