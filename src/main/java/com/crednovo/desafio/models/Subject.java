@@ -3,6 +3,9 @@ package com.crednovo.desafio.models;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -12,6 +15,8 @@ public class Subject {
 	private long id;
 	
 	@Column
+	@Pattern(regexp = "^[A-Z]+(.)*")
+	@NotBlank
 	private String name;
 	
 	@JsonIgnore

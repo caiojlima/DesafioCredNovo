@@ -5,6 +5,9 @@ import com.crednovo.desafio.models.Subject;
 import com.crednovo.desafio.repository.StudentRepository;
 import com.crednovo.desafio.repository.SubjectRepository;
 import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +35,7 @@ public class SubjectsController {
 	
 	@PostMapping(value="/subjects")
 	@ResponseBody
-	public ResponseEntity<?> saveSubject(@RequestBody Subject subject) {
+	public ResponseEntity<?> saveSubject(@RequestBody @Valid Subject subject) {
 		subjectRepository.save(subject);
 		return new ResponseEntity<>(subject, HttpStatus.CREATED);
 	}
